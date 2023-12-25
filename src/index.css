@@ -1,13 +1,43 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components{
+  .scrollList{
+    @apply absolute max-w-[688px] max-h-[90vh] px-[4px] rounded overflow-y-auto overflow-x-hidden bg-white dark:bg-pupdbg;
+  }
+  *::-webkit-scrollbar{
+    width:12px;
+    @apply bg-white dark:bg-scrldrkbg;
+  }
+  *::-webkit-scrollbar-thumb{
+    @apply rounded-[3px] bg-gray-300 dark:bg-btndbg
+  }
+
 }
+#preview{
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  #previewAnchor{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  #searchLine{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  body{
+    @apply bg-gr1 dark:bg-drkfill;
+  }
+  input[type="checkbox"]{
+    @apply cursor-pointer w-4 h-4
+  }
