@@ -1,3 +1,5 @@
+//component not needed now
+
 import {ReactComponent as Arrow} from "../../assets/chevron-right.svg"
 import { Sidebar } from "./Sidebar";
 import { TripleCheckbox } from "./TripleCheckbox";
