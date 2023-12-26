@@ -5,8 +5,8 @@ export function PreviewImageTexted({props}) {
             <div style={{
                 backgroundImage: url,
                 width:"100%",
-                height:"0",
-                paddingBottom:"135%",
+                height:"100%",
+                aspectRatio:"3/4",
                 backgroundSize:"cover",
                 display:"flex",
                 flexDirection:"column-reverse",
@@ -16,7 +16,7 @@ export function PreviewImageTexted({props}) {
                 borderRadius:"4px",
                 boxShadow:"4px 4px 8px 0px rgba(34, 60, 80, 0.2)"
             }}>
-                <div id="preview" className=" rounded-b w-full max-h-16 py-1 px-2 mb-[-130%] text-sm ">
+                <div id="preview" className=" rounded-b w-full max-h-16 my-1 py-1 px-2 text-sm ">
                     <div>{props.modelType}</div>
                     <div>{props.eng_name}</div>
                 </div>       

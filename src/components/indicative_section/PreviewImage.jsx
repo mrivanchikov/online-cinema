@@ -6,6 +6,7 @@ export function PreviewImage({props}) {
                 backgroundImage: url,
                 width:"100%",
                 height:"100%",
+                aspectRatio:"3/4",
                 backgroundSize:"contain",
                 marginTop:"4px",
                 marginBottom:"4px",
