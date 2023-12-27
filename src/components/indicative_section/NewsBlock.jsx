@@ -1,9 +1,5 @@
 export function NewsBlock(props) {
-    let newsList = [];
-    for (let i = 0; i < props.newsList.length; i++) {
-        const element = <div>{props.newsList[i]}</div>;
-        newsList.push(element);
-    }
+    let newsList = props.newsList.map((newsList)=><div>{newsList}</div>)
 
     return(
         <div className="my-5 px-5 rounded bg-white dark:bg-drkbg">

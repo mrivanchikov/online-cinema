@@ -1,3 +1,5 @@
+//component not needed now
+
 import {ReactComponent as Arrow} from '../../assets/arrow-left.svg';
 
 export function Sidebar({props}) {

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { SearchSortDropdown } from "../components/indicative_section/SearchSortDropdown";
 import { TopBar } from "../components/topBar_section/TopBar";
 import { CatalogFeed } from "../components/indicative_section/CatalogFeed";

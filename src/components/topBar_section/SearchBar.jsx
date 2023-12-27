@@ -1,33 +1,21 @@
-import { createAction, createReducer } from '@reduxjs/toolkit';
 import {ReactComponent as SearchIcon} from '../../assets/magnifying-glass.svg';
 import {ReactComponent as CrossIcon} from '../../assets/x-mark.svg';
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { SearchList } from './SearchList';
 import { mockData } from '../../mockData';
 
-const initialSearchState = {isActivated:false};
 //
 const mock = await mockData();
 //
-export const searchActivationAction = createAction("searchActivation");
-export const searchReducer = createReducer(initialSearchState,(builder)=>{
-    builder
-    .addCase(searchActivationAction, (state, action)=>{
-        state.isActivated=action.payload;
-    })
-});
 
-export function SearchBar(props) {
+export function SearchBar({props}) {
     const [textInput, getTextInput] = useState("");
     const [currentPlaceholder, setPlaceholder] = useState();
-    const dispatch = useDispatch();
-    const currentSearchState = useSelector((state)=>state.isActivated);
     const searchBarRef = useRef(null);
     useClickOutside(searchBarRef,()=>{
-        if (currentSearchState) {
-            dispatch(searchActivationAction(false));
+        if (props.currentSearchState) {
+            props.setSearchState(false);
         }
     });
     const scrollLockHandler = (isLocked)=>{
@@ -39,21 +27,21 @@ export function SearchBar(props) {
         }
     }
     useEffect(()=>{
-        scrollLockHandler(currentSearchState);
-    },[currentSearchState]);
+        scrollLockHandler(props.currentSearchState);
+    },[props.currentSearchState]);
     useEffect(()=>{
         const defaultOption = document.querySelector("#opt1");
         defaultOption.checked=true;
         setPlaceholder(defaultOption.value);
     },[]);
         return(
-                <div className={currentSearchState ? "transition-all duration-300 opacity-100 visible" : "transition-all duration-300 opacity-0 invisible"}>
-                    <div className=" absolute left-0 top-0 w-full h-full bg-black opacity-60"></div>
+                <div className={props.currentSearchState ? "transition-all duration-300 opacity-100 visible" : "transition-all duration-300 opacity-0 invisible"}>
+                    <div className=" absolute left-0 top-0 w-full h-screen bg-black opacity-60"></div>
                     <div className=" absolute top-2 max-w-[780px] px-[80px] " ref={searchBarRef}>
                         <div className=" ml-32 inline-flex p-2 bg-white rounded">
                             <button className=" text-black p-1"><SearchIcon/></button>
                             <input className=" dark:text-black outline-none w-[620px]" placeholder={currentPlaceholder} onChange={e=>getTextInput(e.target.value)}></input>
-                            <button className=" text-black p-1" onClick={()=>dispatch(searchActivationAction(false))}><CrossIcon/></button>
+                            <button className=" text-black p-1" onClick={()=>props.setSearchState(false)}><CrossIcon/></button>
                         </div>
 
                         <div className="ml-32">

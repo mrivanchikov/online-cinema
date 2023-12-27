@@ -1,3 +1,5 @@
+//component not needed now
+
 import { useState } from "react";
 
 export function TripleCheckbox({props}) {

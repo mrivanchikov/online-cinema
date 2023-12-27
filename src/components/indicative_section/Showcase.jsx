@@ -3,7 +3,7 @@ import { FilmPreview } from "./FilmPreview";
 export function Showcase({props}) {
     let showcase = [];
     for (let i = 0; i < 6; i++) {
-        const element = <FilmPreview props={props.data[i]}></FilmPreview>;
+        const element = <FilmPreview props={props.data[i]}/>;
         showcase.push(element);
     }
     return(
